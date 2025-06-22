@@ -3,21 +3,22 @@ package CodeBase;
 public class SalaryCalculations {
     // Method to calculate overtime pay
     public double calculateOvertimePay() {
-        return ;
+
+        return 0;
     }
    
     //Method to calculate gross pay
     public double calculateGrossPay() {
-        return ;
+        return 0;
     }
 
     //Method to calculate total deductions
     public double totalDeductions() {
-        return ;
+        return 0;
     }
 
     //Method to calculate total net pay
     public double calculateNetPay() {
-        return ;
+        return 0;
     }
 }

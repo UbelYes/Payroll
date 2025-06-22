@@ -39,6 +39,127 @@ public class Payroll {
 
     //setters and getters
 
+    public double getNetPay() {
+        return netPay;
+    }
+
+    public void setNetPay(double netPay) {
+        this.netPay = netPay;
+    }
+
+    public double getTotalDeductions() {
+        return totalDeductions;
+    }
+
+    public void setTotalDeductions(double totalDeductions) {
+        this.totalDeductions = totalDeductions;
+    }
+
+    public double getIncomeTax() {
+        return incomeTax;
+    }
+
+    public void setIncomeTax(double incomeTax) {
+        this.incomeTax = incomeTax;
+    }
+
+    public double getPagIbigContribution() {
+        return pagIbigContribution;
+    }
+
+    public void setPagIbigContribution(double pagIbigContribution) {
+        this.pagIbigContribution = pagIbigContribution;
+    }
+
+    public double getPhilHealthContribution() {
+        return philHealthContribution;
+    }
+
+    public void setPhilHealthContribution(double philHealthContribution) {
+        this.philHealthContribution = philHealthContribution;
+    }
+
+    public double getSssContribution() {
+        return sssContribution;
+    }
+
+    public void setSssContribution(double sssContribution) {
+        this.sssContribution = sssContribution;
+    }
+
+    public double getGrossPay() {
+        return grossPay;
+    }
+
+    public void setGrossPay(double grossPay) {
+        this.grossPay = grossPay;
+    }
+
+    public double getOvertimePay() {
+        return overtimePay;
+    }
+
+    public void setOvertimePay(double overtimePay) {
+        this.overtimePay = overtimePay;
+    }
+
+    public double getOvertimeRate() {
+        return overtimeRate;
+    }
+
+    public void setOvertimeRate(double overtimeRate) {
+        this.overtimeRate = overtimeRate;
+    }
+
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public void setHourlyRate(double hourlyRate) {
+        this.hourlyRate = hourlyRate;
+    }
+
+    public double getOvertimeHours() {
+        return overtimeHours;
+    }
+
+    public void setOvertimeHours(double overtimeHours) {
+        this.overtimeHours = overtimeHours;
+    }
+
+    public double getBasicSalary() {
+        return basicSalary;
+    }
+
+    public void setBasicSalary(double basicSalary) {
+        this.basicSalary = basicSalary;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+
     /**
      * Complete the code
      */
