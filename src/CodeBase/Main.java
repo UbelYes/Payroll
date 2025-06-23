@@ -108,9 +108,9 @@ public class Main {
         calculatedGrossPay = salaryCalculationsObject.calculateGrossPay(basicSalary, overtimeHours);
         System.out.println("Gross Pay: ₱" + calculatedGrossPay);
         System.out.println(" ");
-        System.out.println("DEDUCTIONIS (2025 Rates):");
-        System.out.println("SSS Contribution: ₱" + statutoryDeductionsObject.calculateSSSContribution());
-        System.out.println("PhilHealth Contribution: ₱" + statutoryDeductionsObject.calculatePhilHealthContribution()); // working
+        System.out.println("DEDUCTIONS (2025 Rates):");
+        System.out.println("SSS Contribution: ₱" + statutoryDeductionsObject.calculateSSSContribution(basicSalary));
+        System.out.println("PhilHealth Contribution: ₱" + statutoryDeductionsObject.calculatePhilHealthContribution(basicSalary)); // working
         System.out.println("Pag-IBIG Contribution: ₱");
         System.out.println("Income Tax: ₱");
         System.out.println("Total Deductions: ₱");
