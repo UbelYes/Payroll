@@ -9,6 +9,7 @@ public class Main {
     private static String department;
     private static double basicSalary;
     private static double overtimeHours;
+    private static double calculatedGrossPay;
 
     public static void main(String[] args) {
         System.out.println("Welcome to ABC Payroll System");
@@ -90,7 +91,11 @@ public class Main {
     public static void printPayslip() {
 
         Payroll payrollObject = new Payroll();
-        // TODO: put salary object
+        SalaryCalculations salaryCalculationsObject = new SalaryCalculations();
+        StatutoryDeductions statutoryDeductionsObject = new StatutoryDeductions();
+        payrollObject.setBasicSalary(basicSalary);
+        payrollObject.setOvertimeHours(overtimeHours);
+
         System.out.println("\nABC Solutions - Employee Payslip (2025)");
         System.out.println("=================================");
         System.out.println("Employee ID: " + employeeID);
@@ -98,11 +103,21 @@ public class Main {
         System.out.println("Department: " + department);
         System.out.println(" ");
         System.out.println("EARNINGS:");
-        System.out.println("Basic Salary: ");
-        System.out.println("Overtime Pay: ");
-        // TODO: use calculateGrossPay method
-        System.out.println("Gross Pay: ₱" + payrollObject.getGrossPay());
+        System.out.println("Basic Salary: ₱");
+        System.out.println("Overtime Pay: ₱");
+        calculatedGrossPay = salaryCalculationsObject.calculateGrossPay(basicSalary, overtimeHours);
+        System.out.println("Gross Pay: ₱" + calculatedGrossPay);
+        System.out.println(" ");
+        System.out.println("DEDUCTIONIS (2025 Rates):");
+        System.out.println("SSS Contribution: ₱" + statutoryDeductionsObject.calculateSSSContribution());
+        System.out.println("PhilHealth Contribution: ₱" + statutoryDeductionsObject.calculatePhilHealthContribution()); // working
+        System.out.println("Pag-IBIG Contribution: ₱");
+        System.out.println("Income Tax: ₱");
+        System.out.println("Total Deductions: ₱");
+        System.out.println(" ");
+        System.out.println("NET PAY: ₱");
         System.out.println("=================================");
+
 
     }
 }
