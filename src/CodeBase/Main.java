@@ -9,7 +9,10 @@ public class Main {
     private static String department;
     private static double basicSalary;
     private static double overtimeHours;
+    private static double overtimePay;
     private static double calculatedGrossPay;
+    private static double calculatedDeductions;
+    private static double calculatedNetPay;
 
     public static void main(String[] args) {
         System.out.println("Welcome to ABC Payroll System");
@@ -30,7 +33,7 @@ public class Main {
                 if (!employeeID.isEmpty() && employeeID.matches("^EMP-\\d{4}$")) {
                     break;
                 } else {
-                    System.out.println("Invalid Employee ID. Try Again.");
+                    System.out.println("Invalid Employee ID. Use 'EMP-XXXX' where X is a digit.");
                 }
             }
 
@@ -79,7 +82,7 @@ public class Main {
             System.out.println("Invalid input. Try again with numbers only.");
         }
         catch (Exception e) {
-            System.out.println("Something went wrong!");
+            System.out.println("Something went wrong! Enter numbers only! Now exiting...");
         }
 
         /**
@@ -93,8 +96,19 @@ public class Main {
         Payroll payrollObject = new Payroll();
         SalaryCalculations salaryCalculationsObject = new SalaryCalculations();
         StatutoryDeductions statutoryDeductionsObject = new StatutoryDeductions();
+
         payrollObject.setBasicSalary(basicSalary);
         payrollObject.setOvertimeHours(overtimeHours);
+        overtimePay = salaryCalculationsObject.calculateOvertimePay(basicSalary, overtimeHours);
+        calculatedGrossPay = salaryCalculationsObject.calculateGrossPay(basicSalary, overtimePay);
+        payrollObject.setSssContribution(statutoryDeductionsObject.calculateSSSContribution(basicSalary));
+        payrollObject.setPhilHealthContribution(statutoryDeductionsObject.calculatePhilHealthContribution(basicSalary));
+        payrollObject.setPagIbigContribution(statutoryDeductionsObject.calculatePagIbigContribution());
+        payrollObject.setIncomeTax(statutoryDeductionsObject.calculateIncomeTax(calculatedGrossPay));
+        calculatedDeductions = salaryCalculationsObject.totalDeductions(payrollObject.getSssContribution(), payrollObject.getPhilHealthContribution(), payrollObject.getPagIbigContribution(), payrollObject.getIncomeTax());
+        payrollObject.setTotalDeductions(calculatedDeductions);
+        calculatedNetPay = salaryCalculationsObject.calculateNetPay(calculatedGrossPay, payrollObject.getTotalDeductions());
+        payrollObject.setNetPay(calculatedNetPay);
 
         System.out.println("\nABC Solutions - Employee Payslip (2025)");
         System.out.println("=================================");
@@ -103,19 +117,18 @@ public class Main {
         System.out.println("Department: " + department);
         System.out.println(" ");
         System.out.println("EARNINGS:");
-        System.out.println("Basic Salary: ₱");
-        System.out.println("Overtime Pay: ₱");
-        calculatedGrossPay = salaryCalculationsObject.calculateGrossPay(basicSalary, overtimeHours);
+        System.out.println("Basic Salary: ₱" + basicSalary);
+        System.out.println("Overtime Pay ("+ overtimeHours +" hours @ ₱" + overtimePay + "/hr): ₱" + overtimePay);
         System.out.println("Gross Pay: ₱" + calculatedGrossPay);
         System.out.println(" ");
         System.out.println("DEDUCTIONS (2025 Rates):");
-        System.out.println("SSS Contribution: ₱" + statutoryDeductionsObject.calculateSSSContribution(basicSalary));
-        System.out.println("PhilHealth Contribution: ₱" + statutoryDeductionsObject.calculatePhilHealthContribution(basicSalary)); // working
-        System.out.println("Pag-IBIG Contribution: ₱");
-        System.out.println("Income Tax: ₱");
-        System.out.println("Total Deductions: ₱");
+        System.out.println("SSS Contribution: ₱" + payrollObject.getSssContribution()); // working
+        System.out.println("PhilHealth Contribution: ₱" + payrollObject.getPhilHealthContribution()); // working
+        System.out.println("Pag-IBIG Contribution: ₱" + payrollObject.getPagIbigContribution()); // working
+        System.out.println("Income Tax: ₱" + payrollObject.getIncomeTax()); // working
+        System.out.println("Total Deductions: ₱" + payrollObject.getTotalDeductions()); // working
         System.out.println(" ");
-        System.out.println("NET PAY: ₱");
+        System.out.println("NET PAY: ₱" + payrollObject.getNetPay()); // working
         System.out.println("=================================");
 
 
