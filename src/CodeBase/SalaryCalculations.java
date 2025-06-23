@@ -1,6 +1,7 @@
 package CodeBase;
 
 public class SalaryCalculations {
+    Payroll payrollObject = new Payroll();
     // Method to calculate overtime pay
     public double calculateOvertimePay() {
 
@@ -8,8 +9,10 @@ public class SalaryCalculations {
     }
    
     //Method to calculate gross pay
-    public double calculateGrossPay() {
-        return 0;
+    public double calculateGrossPay(double basicSalary, double overtimePay) {
+        double grossPayCalculation = basicSalary + overtimePay;
+        payrollObject.setGrossPay(grossPayCalculation);
+        return payrollObject.getGrossPay();
     }
 
     //Method to calculate total deductions

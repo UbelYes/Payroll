@@ -72,14 +72,14 @@ public class Main {
                     break;
                 }
             }
+
+            printPayslip();
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Try again with numbers only.");
         }
         catch (Exception e) {
             System.out.println("Something went wrong!");
         }
-
-        printPayslip();
 
         /**
          *
@@ -89,7 +89,8 @@ public class Main {
 
     public static void printPayslip() {
 
-
+        Payroll payrollObject = new Payroll();
+        // TODO: put salary object
         System.out.println("\nABC Solutions - Employee Payslip (2025)");
         System.out.println("=================================");
         System.out.println("Employee ID: " + employeeID);
@@ -97,6 +98,10 @@ public class Main {
         System.out.println("Department: " + department);
         System.out.println(" ");
         System.out.println("EARNINGS:");
+        System.out.println("Basic Salary: ");
+        System.out.println("Overtime Pay: ");
+        // TODO: use calculateGrossPay method
+        System.out.println("Gross Pay: ₱" + payrollObject.getGrossPay());
         System.out.println("=================================");
 
     }
